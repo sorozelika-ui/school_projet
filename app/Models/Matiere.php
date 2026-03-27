@@ -9,6 +9,6 @@ class Matiere extends Model
     protected $fillable = ['libelle'];
 
     public function notes() {
-        return $this->hasMany(Note::class);
+        return $this->hasMany(Notes::class);
     }
 }

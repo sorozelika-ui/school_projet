@@ -105,3 +105,34 @@ Route::apiResource('class-educ-annee', ClassAnneeEducateurController::class);
 //     ]);
 
      
+// Route de connexion
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+Route::post('/login', function (Request $request) {
+    $email = $request->email;
+    $password = $request->password;
+
+    $parent = \App\Models\ParentEleve::where('email_pere', $email)
+        ->orWhere('email_mere', $email)
+        ->first();
+
+    if (!$parent) {
+        return response()->json(['message' => 'Email introuvable'], 404);
+    }
+
+    $isPere = $parent->email_pere === $email;
+    $passwordHash = $isPere ? $parent->pass_pere : $parent->pass_mere;
+
+    if (!Hash::check($password, $passwordHash)) {
+        return response()->json(['message' => 'Mot de passe incorrect'], 401);
+    }
+
+    return response()->json([
+        'id'     => $parent->id,
+        'nom'    => $isPere ? $parent->nom_pere : $parent->nom_mere,
+        'prenom' => $isPere ? $parent->prenom_pere : $parent->prenom_mere,
+        'email'  => $email,
+        'role'   => $isPere ? 'pere' : 'mere',
+    ]);
+});
