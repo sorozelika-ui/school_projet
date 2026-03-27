@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfesseurController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ParentEleveController;
 use App\Http\Controllers\EleveParentController;
+use App\Http\Controllers\ClassProfAnneeController;
+use App\Http\Controllers\ClassAnneeEducateurController;
 
 Route::apiResource('classes', ClasseController::class);
 Route::apiResource('matieres', MatiereController::class);
@@ -17,7 +19,10 @@ Route::apiResource('professeurs', ProfesseurController::class);
 Route::apiResource('annees', AnneeController::class);
 Route::apiResource('educateurs', EducateurController::class);
 Route::apiResource('eleves', EleveController::class);
-Route::apiResource('eleve-parents', EleveParentController::class);
+Route::apiResource('eleve-parent', EleveParentController::class);
+Route::apiResource('class-prof-annee', ClassProfAnneeController::class);
+Route::apiResource('class-educ-annee', ClassAnneeEducateurController::class);
+
 
 // // Route::apiResource('eleves', EleveController::class);
 

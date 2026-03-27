@@ -10,6 +10,8 @@ class Notes extends Model
     protected $fillable=[
         'note',
         'periode',
+        'type',
+        'coefficient',
         'matiere_id',
         'professeur_id',
         'eleve_id',

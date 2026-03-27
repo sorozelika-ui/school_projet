@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('eleve_parents');
+        Schema::dropIfExists('eleve_parent');
     }
 };

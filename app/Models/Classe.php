@@ -24,6 +24,9 @@ public function educateurs()
                 ->withPivot('annee_id')
                 ->withTimestamps();
 }
-
+public function professeursAnnee()
+{
+    return $this->hasMany(ClassProfAnnee::class);
+}
 
 }

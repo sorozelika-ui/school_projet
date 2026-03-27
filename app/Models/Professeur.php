@@ -26,4 +26,8 @@ class Professeur extends Model
                     ->withPivot('annee_id')
                     ->withTimestamps();
     }
+    public function classesAnnee()
+{
+    return $this->hasMany(ClassProfAnnee::class);
+}
 }
